@@ -7,15 +7,13 @@ class TheyreEatingHer(RuntimeError):
     """
     A poorly acted exception.
     """
-
     pass
 
 
 class ThenTheyreGoingToEatMe(TheyreEatingHer):
     """
     A more specific poorly acted exception.
-    """
-    
+    """    
     pass
 
 
@@ -35,7 +33,6 @@ def troll_check(text):
     if "Nilbog" in text:
         raise ThenTheyreGoingToEatMe("Oh my ...")
 
-    # text.replace("goblin", "elf").replace("hobgoblin", "orc")
     return text.replace("goblin", "elf", 1).replace("hobgoblin", "orc")
 
 
@@ -86,12 +83,9 @@ def scan_directory(directory, extensions=[], include_defaults=True):
 
     for root, dirs, files in os.walk(directory):
         for fn in files:
-            # if fn.split(".')[1] in extensions:
             if "."+fn.split('.')[1] in extensions:
-                # ret = print_troll_checked(directory+"/"+fn)
                 ret = print_troll_checked(os.path.join(root, fn))
                 number_of_troll_files += ret
             
-    # print("Scanning complete. Found %s trolls.", number_of_troll_files)
     print("Scanning complete. Found %s trolls." % number_of_troll_files)
     return number_of_troll_files
